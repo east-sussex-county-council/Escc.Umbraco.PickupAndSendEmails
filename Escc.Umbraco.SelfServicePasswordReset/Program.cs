@@ -1,16 +1,14 @@
 ﻿using Escc.Services;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Net.Mail;
-using System.Configuration;
-using System.Text;
 
 namespace Escc.Umbraco.SelfServicePasswordReset
 {
     class Program
     {
-        private readonly IEmailSender _emailSender;
         static void Main()
         {
             Console.WriteLine(string.Format("<<<--Starting-->>>"));
@@ -36,7 +34,7 @@ namespace Escc.Umbraco.SelfServicePasswordReset
             Console.WriteLine(string.Format("<O> No More Files To Process. Moving on to Send Procedure...."));
             Console.WriteLine(string.Format(""));
             Console.WriteLine(string.Format("<<<--Sending Emails-->>>"));
-            SendEmails(EmailsToSend, new SmtpEmailSender());
+            SendEmails(EmailsToSend);
 
             Console.WriteLine(string.Format("<O> No More Emails To Process."));
             Console.WriteLine(string.Format("<<<--Finished-->>>"));
@@ -44,7 +42,7 @@ namespace Escc.Umbraco.SelfServicePasswordReset
             Console.ReadLine();
         }
 
-        private static void SendEmails(List<EmailModel> EmailsToSend, IEmailSender emailSender)
+        private static void SendEmails(List<EmailModel> EmailsToSend)
         {
             // For each Email to send, process into a MailMessage Object and send using Escc.Services
             foreach (var Email in EmailsToSend)
@@ -53,7 +51,9 @@ namespace Escc.Umbraco.SelfServicePasswordReset
                 var Mail = new MailMessage(Email.From, Email.To, Email.Subject, Email.Body);
                 Mail.IsBodyHtml = true;
                 Mail.BodyEncoding = System.Text.Encoding.UTF8;
-                emailSender.Send(Mail);
+
+                var emailService = ServiceContainer.LoadService<IEmailSender>(new ConfigurationServiceRegistry(), null);
+                emailService.SendAsync(Mail);
                 Console.WriteLine(string.Format("<!> Email Sent to: {0}", Email.To));
             }
         }
