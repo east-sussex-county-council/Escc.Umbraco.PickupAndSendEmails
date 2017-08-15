@@ -38,8 +38,6 @@ namespace Escc.Umbraco.SelfServicePasswordReset
 
             Console.WriteLine(string.Format("<O> No More Emails To Process."));
             Console.WriteLine(string.Format("<<<--Finished-->>>"));
-
-            Console.ReadLine();
         }
 
         private static void SendEmails(List<EmailModel> EmailsToSend)
@@ -55,6 +53,9 @@ namespace Escc.Umbraco.SelfServicePasswordReset
                 var emailService = ServiceContainer.LoadService<IEmailSender>(new ConfigurationServiceRegistry(), null);
                 emailService.SendAsync(Mail);
                 Console.WriteLine(string.Format("<!> Email Sent to: {0}", Email.To));
+
+                Console.WriteLine(string.Format("<X> Deleting .eml file at \"{0}\"", Email.PathToFile));
+                File.Delete(Email.PathToFile); 
             }
         }
 
@@ -73,7 +74,7 @@ namespace Escc.Umbraco.SelfServicePasswordReset
                     if (FileText.Contains("Subject: Umbraco: Reset Password"))
                     {
                         Console.WriteLine(string.Format("<!> File {0} contains password reset subject.", file.Key));
-                        var Email = new EmailModel();
+                        var Email = new EmailModel(string.Format("{0}\\{1}",ConfigurationManager.AppSettings["EmailDirectory"], file.Key));
                         var FileLines = FileText.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
                         foreach (var line in FileLines)

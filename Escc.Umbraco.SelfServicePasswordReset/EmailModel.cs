@@ -19,9 +19,11 @@ namespace Escc.Umbraco.SelfServicePasswordReset
         public string ContentType { get; set; }
         public string ContentTransferEncoding { get; set; }
 
-        public EmailModel()
-        {
+        public string PathToFile { get; set; }
 
+        public EmailModel(string pathToFile)
+        {
+            PathToFile = pathToFile;
         }
     }
 }
