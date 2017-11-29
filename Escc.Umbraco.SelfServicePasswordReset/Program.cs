@@ -1,4 +1,7 @@
 ﻿using Escc.Services;
+using Exceptionless;
+using log4net;
+using log4net.Config;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -9,35 +12,42 @@ namespace Escc.Umbraco.SelfServicePasswordReset
 {
     class Program
     {
+        private static readonly ILog log = LogManager.GetLogger(typeof(Program));
+
         static void Main()
         {
-            Console.WriteLine(string.Format("<<<--Starting-->>>"));
-            var Files = new Dictionary<string, string>();
+            ExceptionlessClient.Default.Startup();
+            XmlConfigurator.Configure();
 
-            //Open directory
-            string path = ConfigurationManager.AppSettings["EmailDirectory"];
-            DirectoryInfo directory = new DirectoryInfo(path);
-            Console.WriteLine(string.Format("<#> Looking at path: {0}", path));
-
-            // For each file in the directory, record the file name and full path
-            foreach (FileInfo file in directory.GetFiles())
+            try
             {
-                Files.Add(file.Name, file.FullName);
-                Console.WriteLine(string.Format("<!> Found the file: {0}", file.Name));
+                var Files = new Dictionary<string, string>();
+
+                //Open directory
+                string path = ConfigurationManager.AppSettings["EmailDirectory"];
+                DirectoryInfo directory = new DirectoryInfo(path);
+                log.Info(string.Format("Looking at path: {0}", path));
+
+                // For each file in the directory, record the file name and full path
+                foreach (FileInfo file in directory.GetFiles())
+                {
+                    Files.Add(file.Name, file.FullName);
+                    log.Info(string.Format("Found the file: {0}", file.Name));
+                }
+
+                log.Info(string.Format("No more files found. Moving on to file processing."));
+                var EmailsToSend = ProcessFiles(Files);
+
+                log.Info(string.Format("No more files to process. Moving on to sending emails..."));
+                SendEmails(EmailsToSend);
+
+                log.Info(string.Format("No more emails to process."));
             }
-
-            Console.WriteLine(string.Format("<O> No more files found. Moving on to file processing."));
-            Console.WriteLine(string.Format(""));
-            Console.WriteLine(string.Format("<<<--Processing Files-->>>"));
-            var EmailsToSend = ProcessFiles(Files);
-
-            Console.WriteLine(string.Format("<O> No More Files To Process. Moving on to Send Procedure...."));
-            Console.WriteLine(string.Format(""));
-            Console.WriteLine(string.Format("<<<--Sending Emails-->>>"));
-            SendEmails(EmailsToSend);
-
-            Console.WriteLine(string.Format("<O> No More Emails To Process."));
-            Console.WriteLine(string.Format("<<<--Finished-->>>"));
+            catch (Exception ex)
+            {
+                ex.ToExceptionless().Submit();
+                log.Error(ex.Message);
+            }
         }
 
         private static void SendEmails(List<EmailModel> EmailsToSend)
@@ -45,16 +55,16 @@ namespace Escc.Umbraco.SelfServicePasswordReset
             // For each Email to send, process into a MailMessage Object and send using Escc.Services
             foreach (var Email in EmailsToSend)
             {
-                Console.WriteLine(string.Format("<#> Processing password reset email to: {0}", Email.To));
+                log.Info(string.Format("Processing password reset email to: {0}", Email.To));
                 var Mail = new MailMessage(Email.From, Email.To, Email.Subject, Email.Body);
                 Mail.IsBodyHtml = true;
                 Mail.BodyEncoding = System.Text.Encoding.UTF8;
 
                 var emailService = ServiceContainer.LoadService<IEmailSender>(new ConfigurationServiceRegistry(), null);
                 emailService.SendAsync(Mail);
-                Console.WriteLine(string.Format("<!> Email Sent to: {0}", Email.To));
+                log.Info(string.Format("Email Sent to: {0}", Email.To));
 
-                Console.WriteLine(string.Format("<X> Deleting .eml file at \"{0}\"", Email.PathToFile));
+                log.Info(string.Format("Deleting .eml file at \"{0}\"", Email.PathToFile));
                 File.Delete(Email.PathToFile); 
             }
         }
@@ -65,15 +75,15 @@ namespace Escc.Umbraco.SelfServicePasswordReset
             //Look for files that end in .eml
             foreach (var file in Files)
             {
-                Console.WriteLine(string.Format("<#> Looking at file: {0}", file.Key));
+                log.Info(string.Format("Looking at file: {0}", file.Key));
                 if (file.Key.Contains(".eml"))
                 {
-                    Console.WriteLine(string.Format("<!> File {0} is an .eml file.", file.Key));
+                    log.Info(string.Format("File {0} is an .eml file.", file.Key));
                     var FileText = File.ReadAllText(file.Value);
                     // if the file contains the text "subject something something password reset" etc
                     if (FileText.Contains("Subject: Umbraco: Reset Password"))
                     {
-                        Console.WriteLine(string.Format("<!> File {0} contains password reset subject.", file.Key));
+                        log.Info(string.Format("File {0} contains password reset subject.", file.Key));
                         var Email = new EmailModel(string.Format("{0}\\{1}",ConfigurationManager.AppSettings["EmailDirectory"], file.Key));
                         var FileLines = FileText.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -125,16 +135,16 @@ namespace Escc.Umbraco.SelfServicePasswordReset
                             }
                         }
                         EmailsToSend.Add(Email);
-                        Console.WriteLine(string.Format("<!> File {0} processed and added to EmailsToSend list.", file.Key));
+                        log.Info(string.Format("File {0} processed and added to EmailsToSend list.", file.Key));
                     }
                     else
                     {
-                        Console.WriteLine(string.Format("<X> File {0} does not contain password reset subject.", file.Key));
+                        log.Info(string.Format("File {0} does not contain password reset subject.", file.Key));
                     }
                 }
                 else
                 {
-                    Console.WriteLine(string.Format("<X> File {0} is not an .eml file.", file.Key));
+                    log.Info(string.Format("File {0} is not an .eml file.", file.Key));
                 }
                
             }
