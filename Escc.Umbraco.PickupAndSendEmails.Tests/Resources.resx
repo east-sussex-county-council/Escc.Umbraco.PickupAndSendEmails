@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FormSubmittedEmail" xml:space="preserve">
+    <value>X-Sender: your@email.here
+X-Receiver: example@eastsussex.gov.uk
+MIME-Version: 1.0
+From: your@email.here
+To: example@eastsussex.gov.uk
+Date: 18 Dec 2017 16:54:57 +0000
+Subject: The Form 'Test form' was submitted
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+=0D=0A&lt;!DOCTYPE html&gt;=0D=0A&lt;html&gt;=0D=0A&lt;head&gt;=0D=0A    &lt;title&gt;&lt;/t=
+itle&gt;=0D=0A    &lt;meta http-equiv=3D"Content-Type" content=3D"text/=
+html; charset=3Dutf-8" /&gt;=0D=0A    &lt;meta name=3D"viewport" conten=
+t=3D"width=3Ddevice-width, initial-scale=3D1"&gt;=0D=0A    &lt;meta htt=
+p-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge" /&gt;=0D=0A    &lt;li=
+nk href=3D"https://fonts.googleapis.com/css?family=3DLato:400,700=
+,900" rel=3D"stylesheet"&gt;=0D=0A    &lt;style type=3D"text/css"&gt;=0D=0A=
+=0D=0A    /* CLIENT-SPECIFIC STYLES */=0D=0A    body, table, td, =
+a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }=
+=0D=0A    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0p=
+t; }=0D=0A    img { -ms-interpolation-mode: bicubic; }=0D=0A=0D=0A=
+    /* RESET STYLES */=0D=0A    img { border: 0; height: auto; li=
+ne-height: 100%; outline: none; text-decoration: none; }=0D=0A   =
+ table { border-collapse: collapse !important; }=0D=0A    body { =
+height: 100% !important; margin: 0 !important; padding: 0 !import=
+ant; width: 100% !important; }=0D=0A=0D=0A    /* iOS BLUE LINKS *=
+/=0D=0A    a[x-apple-data-detectors] {=0D=0A        color: inheri=
+t !important;=0D=0A        text-decoration: none !important;=0D=0A=
+        font-size: inherit !important;=0D=0A        font-family: =
+inherit !important;=0D=0A        font-weight: inherit !important;=
+=0D=0A        line-height: inherit !important;=0D=0A    }=0D=0A=0D=0A=
+	/* MOBILE STYLES */=0D=0A	@media screen and (max-width:600px){=0D=0A=
+		h1 {=0D=0A			font-size: 32px !important;=0D=0A			line-height: 3=
+2px !important;=0D=0A		}=0D=0A	}=0D=0A=0D=0A    /* ANDROID CENTER=
+ FIX */=0D=0A    div[style*=3D"margin: 16px 0;"] { margin: 0 !imp=
+ortant; }=0D=0A    &lt;/style&gt;=0D=0A&lt;/head&gt;=0D=0A&lt;body style=3D"back=
+ground-color: #f4f4f4; margin: 0 !important; padding: 0 !importan=
+t;"&gt;=0D=0A    &lt;table border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" width=3D"100%" style=3D"margin-bottom: 40px;"&gt;=0D=0A        &lt;=
+!-- LOGO --&gt;=0D=0A        &lt;tr&gt;=0D=0A            &lt;td bgcolor=3D"#4=
+13659" align=3D"center"&gt;=0D=0A                &lt;!--[if (gte mso 9)=
+|(IE)]&gt;=0D=0A                    &lt;table align=3D"center" border=3D=
+"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"600"&gt;=0D=0A     =
+               &lt;tr&gt;=0D=0A                    &lt;td align=3D"center"=
+ valign=3D"top" width=3D"600"&gt;=0D=0A                &lt;![endif]--&gt;=0D=0A=
+                &lt;table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"100%" style=3D"max-width: 600px;"&gt;=0D=0A         =
+           &lt;tr&gt;=0D=0A                        &lt;td align=3D"center"=
+ valign=3D"top" style=3D"padding: 40px 10px 40px 10px;"&gt;=0D=0A   =
+                         &lt;a href=3D"http://umbraco.com" target=3D=
+"_blank"&gt;=0D=0A                                &lt;img alt=3D"Logo" =
+src=3D"https://escc-umbraco.azurewebsites.net/App_plugins/Umbraco=
+Forms/Assets/Email-Example/umbraco-logo.png" width=3D"40" height=3D=
+"40" style=3D"display: block; width: 40px; max-width: 40px; min-w=
+idth: 40px; font-family: 'Lato', Helvetica, Arial, sans-serif; co=
+lor: #ffffff; font-size: 18px;" border=3D"0"&gt;=0D=0A              =
+              &lt;/a&gt;=0D=0A                        &lt;/td&gt;=0D=0A      =
+              &lt;/tr&gt;=0D=0A                &lt;/table&gt;=0D=0A          =
+      &lt;!--[if (gte mso 9)|(IE)]&gt;=0D=0A                    &lt;/td&gt;=0D=0A=
+                    &lt;/tr&gt;=0D=0A                    &lt;/table&gt;=0D=0A=
+                &lt;![endif]--&gt;=0D=0A            &lt;/td&gt;=0D=0A        =
+&lt;/tr&gt;=0D=0A=0D=0A        &lt;!-- HERO --&gt;=0D=0A        &lt;tr&gt;=0D=0A   =
+         &lt;td bgcolor=3D"#413659" align=3D"center" style=3D"paddin=
+g: 0px 10px 0px 10px;"&gt;=0D=0A                &lt;!--[if (gte mso 9)|=
+(IE)]&gt;=0D=0A                    &lt;table align=3D"center" border=3D=
+"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"600"&gt;=0D=0A     =
+               &lt;tr&gt;=0D=0A                    &lt;td align=3D"center"=
+ valign=3D"top" width=3D"600"&gt;=0D=0A                &lt;![endif]--&gt;=0D=0A=
+                &lt;table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"100%" style=3D"max-width: 600px;"&gt;=0D=0A         =
+           &lt;tr&gt;=0D=0A                        &lt;td bgcolor=3D"#ffff=
+ff" align=3D"center" valign=3D"top" style=3D"padding: 40px 20px 2=
+0px 20px; color: #000000; font-family: 'Lato', Helvetica, Arial, =
+sans-serif; font-size: 36px; font-weight: 900; line-height: 48px;=
+"&gt;=0D=0A                            &lt;h1 style=3D"font-size: 36px;=
+ font-weight: 900; margin: 0;"&gt;Umbraco Forms&lt;/h1&gt;=0D=0A          =
+              &lt;/td&gt;=0D=0A                    &lt;/tr&gt;=0D=0A         =
+       &lt;/table&gt;=0D=0A                &lt;!--[if (gte mso 9)|(IE)]&gt;=0D=0A=
+                    &lt;/td&gt;=0D=0A                    &lt;/tr&gt;=0D=0A   =
+                 &lt;/table&gt;=0D=0A                &lt;![endif]--&gt;=0D=0A=
+            &lt;/td&gt;=0D=0A        &lt;/tr&gt;=0D=0A=0D=0A        &lt;!-- COPY=
+ BLOCK --&gt;=0D=0A        &lt;tr&gt;=0D=0A            &lt;td bgcolor=3D"#F3F=
+3F5" align=3D"center" style=3D"padding: 0px 10px 0px 10px;"&gt;=0D=0A=
+                &lt;!--[if (gte mso 9)|(IE)]&gt;=0D=0A                 =
+   &lt;table align=3D"center" border=3D"0" cellspacing=3D"0" cellpad=
+ding=3D"0" width=3D"600"&gt;=0D=0A                    &lt;tr&gt;=0D=0A    =
+                &lt;td align=3D"center" valign=3D"top" width=3D"600"=
+&gt;=0D=0A                &lt;![endif]--&gt;=0D=0A                &lt;table b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" st=
+yle=3D"max-width: 600px;"&gt;=0D=0A=0D=0A                    &lt;!-- CO=
+PY --&gt;=0D=0A                    &lt;tr&gt;=0D=0A                       =
+ &lt;td bgcolor=3D"#ffffff" align=3D"left" style=3D"padding: 20px 30=
+px 40px 30px; color: #303033; font-family: 'Lato', Helvetica, Ari=
+al, sans-serif; font-size: 18px; font-weight: 400; line-height: 1=
+..6em;"&gt;=0D=0A                            This is an example email=
+ template from Umbraco Forms Razor based email templates. You can=
+ build forms using any HTML markup you wish.=0D=0A               =
+         &lt;/td&gt;=0D=0A                    &lt;/tr&gt;=0D=0A=0D=0A        =
+            &lt;!-- IMAGE --&gt;=0D=0A                    &lt;tr&gt;=0D=0A   =
+                     &lt;td bgcolor=3D"#ffffff" align=3D"left" style=
+=3D"padding: 0;"&gt;=0D=0A                            &lt;a href=3D"htt=
+p://umbraco.com" target=3D"_blank"&gt;=0D=0A                        =
+        &lt;img alt=3D"CodeGarden16 Attendees" src=3D"https://escc-u=
+mbraco.azurewebsites.net/App_plugins/UmbracoForms/Assets/Email-Ex=
+ample/sample-image.jpg" width=3D"600" style=3D"display: block; wi=
+dth: 100%; max-width: 100%; min-width: 100px;" border=3D"0" /&gt;=0D=0A=
+                            &lt;/a&gt;=0D=0A                        &lt;/t=
+d&gt;=0D=0A                    &lt;/tr&gt;=0D=0A=0D=0A                    =
+&lt;!-- COPY HEADING --&gt;=0D=0A                    &lt;tr&gt;=0D=0A        =
+                &lt;td bgcolor=3D"#ffffff" align=3D"left" style=3D"p=
+adding: 40px 30px 0px 30px; color: #000000; font-family: 'Lato', =
+Helvetica, Arial, sans-serif; line-height: 25px;"&gt;=0D=0A         =
+                   &lt;h2 style=3D"font-size: 24px; font-weight: 700=
+; margin: 0;"&gt;Form Results&lt;/h2&gt;=0D=0A                        &lt;/td=
+&gt;=0D=0A                    &lt;/tr&gt;=0D=0A=0D=0A                    &lt;=
+!-- COPY --&gt;=0D=0A                    &lt;tr&gt;=0D=0A                 =
+       &lt;td bgcolor=3D"#ffffff" align=3D"left" style=3D"padding: 2=
+0px 30px 40px 30px; color: #303033; font-family: 'Lato', Helvetic=
+a, Arial, sans-serif; font-size: 18px; font-weight: 400; line-hei=
+ght: 25px;"&gt;=0D=0A                            =0D=0A             =
+                   &lt;h4 style=3D"font-weight: 700; margin: 0; colo=
+r: #000000;"&gt;What&amp;#39;s the answer?&lt;/h4&gt;=0D=0A                   =
+                     &lt;p style=3D"margin-top: 0;"&gt;Maybe&lt;/p&gt;=0D=0A=0D=0A=
+                        &lt;/td&gt;=0D=0A                    &lt;/tr&gt;=0D=0A=
+                &lt;/table&gt;=0D=0A                &lt;!--[if (gte mso 9)=
+|(IE)]&gt;=0D=0A                    &lt;/td&gt;=0D=0A                    &lt;=
+/tr&gt;=0D=0A                    &lt;/table&gt;=0D=0A                &lt;![en=
+dif]--&gt;=0D=0A            &lt;/td&gt;=0D=0A        &lt;/tr&gt;=0D=0A=0D=0A    =
+    &lt;!-- SUPPORT CALLOUT --&gt;=0D=0A        &lt;tr&gt;=0D=0A            &lt;=
+td bgcolor=3D"#F3F3F5" align=3D"center" style=3D"padding: 30px 10=
+px 0px 10px;"&gt;=0D=0A                &lt;!--[if (gte mso 9)|(IE)]&gt;=0D=0A=
+                    &lt;table align=3D"center" border=3D"0" cellspac=
+ing=3D"0" cellpadding=3D"0" width=3D"600"&gt;=0D=0A                 =
+   &lt;tr&gt;=0D=0A                    &lt;td align=3D"center" valign=3D"t=
+op" width=3D"600"&gt;=0D=0A                &lt;![endif]--&gt;=0D=0A       =
+         &lt;table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+width=3D"100%" style=3D"max-width: 600px;"&gt;=0D=0A                =
+    &lt;!-- HEADLINE --&gt;=0D=0A                    &lt;tr&gt;=0D=0A        =
+                &lt;td bgcolor=3D"#03BFB3" align=3D"center" style=3D=
+"padding: 30px 30px 30px 30px; color: #ffffff; font-family: 'Lato=
+', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 40=
+0; line-height: 25px;"&gt;=0D=0A                            &lt;h2 styl=
+e=3D"font-size: 20px; font-weight: 700; color: #ffffff; margin: 0=
+; margin-bottom: 5px;"&gt;Need more help?&lt;/h2&gt;=0D=0A                =
+            &lt;p style=3D"margin: 0;"&gt;&lt;a href=3D"https://our.umbrac=
+o.org/Documentation/Add-ons/UmbracoForms/" target=3D"_blank" styl=
+e=3D"color: #ffffff;"&gt;Find our documentation here&lt;/a&gt;&lt;/p&gt;=0D=0A  =
+                      &lt;/td&gt;=0D=0A                    &lt;/tr&gt;=0D=0A =
+               &lt;/table&gt;=0D=0A                &lt;!--[if (gte mso 9)|=
+(IE)]&gt;=0D=0A                    &lt;/td&gt;=0D=0A                    &lt;/=
+tr&gt;=0D=0A                    &lt;/table&gt;=0D=0A                &lt;![end=
+if]--&gt;=0D=0A            &lt;/td&gt;=0D=0A        &lt;/tr&gt;=0D=0A=0D=0A    &lt;=
+/table&gt;=0D=0A&lt;/body&gt;=0D=0A&lt;/html&gt;=0D=0A</value>
+  </data>
+  <data name="PasswordResetEmail" xml:space="preserve">
+    <value>X-Sender: do-not-reply@eastsussex.gov.uk
+X-Receiver: example@eastsussex.gov.uk
+MIME-Version: 1.0
+From: do-not-reply@eastsussex.gov.uk
+To: webstaff@eastsussex.gov.uk
+Date: 19 Dec 2017 10:16:02 +0000
+Subject: Umbraco: Reset Password
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+&lt;p&gt;Your username to login to the Umbraco back-office is: &lt;strong&gt;=
+example&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Click &lt;a href=3D"https://hostname=
+..azurewebsites.net/umbraco/ValidatePasswordResetCode?u=3D0&amp;r=3DJq=
+c3aS%2Fm5nnaaIY1v1Jt5GXCoyGprCQZRpnOslF9SiApTKi23OTbn%2FT1K9ayPFO=
+exLC35PXfUc70gCl8v6k7AOfE9IjHZUVmMjbQOS1LXX2ccfpwVRDJCt17jCET%2BX=
+ERsvblpQ%3D%3D"&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt; to reset your password =
+or copy/paste this URL into your browser:&lt;/p&gt;&lt;p&gt;&lt;em&gt;https://hostname=
+.azurewebsites.net/umbraco/ValidatePasswordResetCode?u=3D0=
+&amp;r=3DJqc3aS%2Fm5nn1JtpnOslF9SiAp5GXCoyGpraaIY1vCQZRTKi23OTbn%2FT1=
+K9ayPFOexLC35PXfUc70gCl8v6k7AOfE9IjHZUVmMjbQOS1LXX2ccfpwVRDJCt17j=
+CET%2BXERsvblpQ%3D%3D&lt;/em&gt;&lt;/p&gt;</value>
+  </data>
+</root>

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Escc.Umbraco.SelfServicePasswordReset
+namespace Escc.Umbraco.PickupAndSendEmails
 {
-    class EmailModel
+    public class EmailModel
     {
         public string From { get; set; }
         public string To { get; set; }
@@ -20,10 +20,5 @@ namespace Escc.Umbraco.SelfServicePasswordReset
         public string ContentTransferEncoding { get; set; }
 
         public string PathToFile { get; set; }
-
-        public EmailModel(string pathToFile)
-        {
-            PathToFile = pathToFile;
-        }
     }
 }

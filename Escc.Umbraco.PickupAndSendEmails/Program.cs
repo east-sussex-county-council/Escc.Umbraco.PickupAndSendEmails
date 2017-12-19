@@ -8,7 +8,7 @@ using System.Configuration;
 using System.IO;
 using System.Net.Mail;
 
-namespace Escc.Umbraco.SelfServicePasswordReset
+namespace Escc.Umbraco.PickupAndSendEmails
 {
     class Program
     {
@@ -72,6 +72,11 @@ namespace Escc.Umbraco.SelfServicePasswordReset
         private static List<EmailModel> ProcessFiles(Dictionary<string, string> Files)
         {
             var EmailsToSend = new List<EmailModel>();
+            var subjectMatchers = new IContentMatcher[] {
+                new StringContentMatcher("Subject: Umbraco: Reset Password"),
+                new RegexContentMatcher("Subject: The Form '.*' was submitted")
+            };
+            var emailParser = new EmailParser();
             //Look for files that end in .eml
             foreach (var file in Files)
             {
@@ -81,65 +86,23 @@ namespace Escc.Umbraco.SelfServicePasswordReset
                     log.Info(string.Format("File {0} is an .eml file.", file.Key));
                     var FileText = File.ReadAllText(file.Value);
                     // if the file contains the text "subject something something password reset" etc
-                    if (FileText.Contains("Subject: Umbraco: Reset Password"))
-                    {
-                        log.Info(string.Format("File {0} contains password reset subject.", file.Key));
-                        var Email = new EmailModel(string.Format("{0}\\{1}",ConfigurationManager.AppSettings["EmailDirectory"], file.Key));
-                        var FileLines = FileText.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
-                        foreach (var line in FileLines)
-                        {
-                            if (line.Contains("From:"))
-                            {
-                                Email.From = line.Replace("From:", "").Replace("\r", "");
-                            }
-                            else if (line.Contains("To:"))
-                            {
-                                Email.To = line.Replace("To:", "").Replace("\r", "");
-                            }
-                            else if (line.Contains("Subject:"))
-                            {
-                                Email.Subject = line.Replace("Subject:", "").Replace("\r", "");
-                            }
-                            else if (line.Contains("Umbraco: Reset Password"))
-                            {
-                                Email.Subject += line.Replace("\r", "");
-                            }
-                            else if (line.Contains("Date:"))
-                            {
-                                Email.Sent = DateTime.Parse(line.Replace("Date:", ""));
-                            }
-                            else if (line.Contains("X-Sender:"))
-                            {
-                                Email.XSender = line.Replace("X-Sender:", "").Replace("\r", "");
-                            }
-                            else if (line.Contains("X-Receiver:"))
-                            {
-                                Email.XReceiver = line.Replace("X-Receiver:", "").Replace("\r", "");
-                            }
-                            else if (line.Contains("MIME-Version:"))
-                            {
-                                Email.MimeVersion = line.Replace("MIME-Version:", "").Replace("\r", "");
-                            }
-                            else if (line.Contains("Content-Type:"))
-                            {
-                                Email.ContentType = line.Replace("Content-Type:", "").Replace("\r", "");
-                            }
-                            else if (line.Contains("Content-Transfer-Encoding:"))
-                            {
-                                Email.ContentTransferEncoding = line.Replace("Content-Transfer-Encoding:", "").Replace("\r", "");
-                            }
-                            else
-                            {
-                                Email.Body += line.Replace("=\r","").Replace("=3D","=");
-                            }
-                        }
-                        EmailsToSend.Add(Email);
+                    var isMatch = false;
+                    foreach (var matcher in subjectMatchers) isMatch = isMatch || matcher.IsMatch(FileText);
+
+                    if (isMatch)
+                    {
+                        log.Info(string.Format("File {0} contains recognised subject.", file.Key));
+
+                        var email = emailParser.ParseEmail(FileText);
+                        email.PathToFile = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["EmailDirectory"], file.Key);
+                        EmailsToSend.Add(email);
+
                         log.Info(string.Format("File {0} processed and added to EmailsToSend list.", file.Key));
                     }
                     else
                     {
-                        log.Info(string.Format("File {0} does not contain password reset subject.", file.Key));
+                        log.Info(string.Format("File {0} does not contain a recognised subject.", file.Key));
                     }
                 }
                 else
