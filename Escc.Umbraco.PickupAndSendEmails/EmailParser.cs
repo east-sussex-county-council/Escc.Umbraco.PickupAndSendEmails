@@ -18,7 +18,8 @@ namespace Escc.Umbraco.PickupAndSendEmails
 
         public EmailParser(ISubjectParser subjectParser)
         {
-            this._subjectParser = subjectParser ?? throw new ArgumentNullException(nameof(subjectParser));
+            if (subjectParser == null) throw new ArgumentNullException(nameof(subjectParser));
+            this._subjectParser = subjectParser;
         }
 
         /// <summary>
