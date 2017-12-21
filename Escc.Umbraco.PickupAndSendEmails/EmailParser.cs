@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Escc.Umbraco.PickupAndSendEmails
@@ -12,6 +13,13 @@ namespace Escc.Umbraco.PickupAndSendEmails
     /// <seealso cref="Escc.Umbraco.PickupAndSendEmails.IEmailParser" />
     public class EmailParser : IEmailParser
     {
+        private readonly ISubjectParser _subjectParser;
+
+        public EmailParser(ISubjectParser subjectParser)
+        {
+            this._subjectParser = subjectParser ?? throw new ArgumentNullException(nameof(subjectParser));
+        }
+
         /// <summary>
         /// Parses the email.
         /// </summary>
@@ -21,6 +29,7 @@ namespace Escc.Umbraco.PickupAndSendEmails
         public EmailModel ParseEmail(string content)
         {
             var email = new EmailModel();
+
             var fileLines = content.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (var line in fileLines)
@@ -32,10 +41,6 @@ namespace Escc.Umbraco.PickupAndSendEmails
                 else if (line.Contains("To:"))
                 {
                     email.To = line.Replace("To:", "").Replace("\r", "");
-                }
-                else if (line.Contains("Subject:"))
-                {
-                    email.Subject = line.Replace("Subject:", "").Replace("\r", "").Trim();
                 }
                 else if (line.Contains("Date:"))
                 {
@@ -66,6 +71,8 @@ namespace Escc.Umbraco.PickupAndSendEmails
                     email.Body += line.Replace("=\r", "").Replace("=3D", "=");
                 }
             }
+
+            email.Subject = _subjectParser.ParseSubject(content);
 
             return email;
         }

@@ -11,16 +11,19 @@ namespace Escc.Umbraco.PickupAndSendEmails
     /// Determines whether an email is a match based on matching a regular expression
     /// </summary>
     /// <seealso cref="Escc.Umbraco.PickupAndSendEmails.IContentMatcher" />
-    public class RegexContentMatcher : IContentMatcher
+    public class RegexSubjectMatcher : IContentMatcher
     {
+        private readonly ISubjectParser _subjectParser;
         private readonly string _regexToMatch;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StringContentMatcher"/> class.
+        /// Initializes a new instance of the <see cref="StringContentMatcher" /> class.
         /// </summary>
+        /// <param name="subjectParser">The subject parser.</param>
         /// <param name="regexToMatch">The exact string to match.</param>
-        public RegexContentMatcher(string regexToMatch)
+        public RegexSubjectMatcher(ISubjectParser subjectParser, string regexToMatch)
         {
+            this._subjectParser = subjectParser ?? throw new ArgumentNullException(nameof(subjectParser));
             this._regexToMatch = regexToMatch;
         }
 
@@ -35,7 +38,7 @@ namespace Escc.Umbraco.PickupAndSendEmails
         public bool IsMatch(string content)
         {
             if (String.IsNullOrEmpty(content)) return false;
-            return new Regex(_regexToMatch).IsMatch(content);
+            return new Regex(_regexToMatch, RegexOptions.Multiline).IsMatch(_subjectParser.ParseSubject(content));
         }
     }
 }

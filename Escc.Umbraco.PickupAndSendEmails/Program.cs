@@ -72,11 +72,13 @@ namespace Escc.Umbraco.PickupAndSendEmails
         private static List<EmailModel> ProcessFiles(Dictionary<string, string> Files)
         {
             var EmailsToSend = new List<EmailModel>();
+            var subjectParser = new SubjectParser();
             var subjectMatchers = new IContentMatcher[] {
                 new StringContentMatcher("Subject: Umbraco: Reset Password"),
-                new RegexContentMatcher("Subject: The Form '.*' was submitted")
+                new RegexSubjectMatcher(subjectParser, "^The Form '(\n|\r|\r\n|.)*' was submitted$")
             };
-            var emailParser = new EmailParser();
+
+            var emailParser = new EmailParser(subjectParser);
             //Look for files that end in .eml
             foreach (var file in Files)
             {

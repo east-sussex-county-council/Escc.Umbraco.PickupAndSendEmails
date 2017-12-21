@@ -83,6 +83,27 @@ namespace Escc.Umbraco.PickupAndSendEmails.Tests {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to X-Sender: your@email.here
+        ///X-Receiver: example@eastsussex.gov.uk
+        ///MIME-Version: 1.0
+        ///From: your@email.here
+        ///To: example@eastsussex.gov.uk
+        ///Date: 20 Dec 2017 15:26:40 +0000
+        ///Subject: The Form &apos;Report an incident or issue to Trading Standards (version
+        /// 1 / 2017-12-20-current)&apos; was submitted
+        ///Content-Type: text/html; charset=us-ascii
+        ///Content-Transfer-Encoding: quoted-printable
+        ///
+        ///=0D=0A&lt;!DOCTYPE html&gt;=0D=0A&lt;html&gt;=0D=0A&lt;head&gt;=0D=0A    &lt;title&gt;&lt;/t=
+        ///itle&gt;=0D=0A    &lt;meta http-equiv=3D&quot;Content-Type&quot; content=3D&quot;te [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string FormSubmittedEmailMultilineSubject {
+            get {
+                return ResourceManager.GetString("FormSubmittedEmailMultilineSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to X-Sender: do-not-reply@eastsussex.gov.uk
         ///X-Receiver: example@eastsussex.gov.uk
         ///MIME-Version: 1.0

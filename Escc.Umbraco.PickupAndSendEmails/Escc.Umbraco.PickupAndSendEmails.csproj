@@ -118,10 +118,12 @@
     <Compile Include="EmailParser.cs" />
     <Compile Include="IContentMatcher.cs" />
     <Compile Include="IEmailParser.cs" />
+    <Compile Include="ISubjectParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegexContentMatcher.cs" />
     <Compile Include="StringContentMatcher.cs" />
+    <Compile Include="SubjectParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
