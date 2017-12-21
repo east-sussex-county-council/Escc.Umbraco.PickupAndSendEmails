@@ -2,9 +2,9 @@
 {
     internal class FakeSubjectParser : ISubjectParser
     {
-        public (int, int) LocateSubjectHeader(string text)
+        public int[] LocateSubjectHeader(string text)
         {
-            return (0,0);
+            return new int[2];
         }
 
         public string ParseSubject(string text)

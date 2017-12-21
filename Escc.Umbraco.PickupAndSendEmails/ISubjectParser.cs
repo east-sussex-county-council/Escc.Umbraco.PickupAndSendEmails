@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="text">The text.</param>
         /// <returns></returns>
-        (int, int) LocateSubjectHeader(string text);
+        int[] LocateSubjectHeader(string text);
 
         /// <summary>
         /// Parses the subject.

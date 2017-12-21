@@ -34,7 +34,7 @@ namespace Escc.Umbraco.PickupAndSendEmails
             // Parse the subject, then remove it from the source so that it's not included in the body
             email.Subject = _subjectParser.ParseSubject(content);
             var subjectPostion = _subjectParser.LocateSubjectHeader(content);
-            content = content.Substring(0, subjectPostion.Item1) + content.Substring(subjectPostion.Item2); 
+            content = content.Substring(0, subjectPostion[0]) + content.Substring(subjectPostion[1]); 
 
             var fileLines = content.Split(new[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 

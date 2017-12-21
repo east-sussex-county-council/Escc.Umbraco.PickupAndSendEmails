@@ -16,9 +16,9 @@ namespace Escc.Umbraco.PickupAndSendEmails
         /// </summary>
         /// <param name="text">The text.</param>
         /// <returns></returns>
-        public (int, int) LocateSubjectHeader(string text)
+        public int[] LocateSubjectHeader(string text)
         {
-            return (text.IndexOf("Subject:"), text.IndexOf("Content-Type:"));
+            return new int[] { text.IndexOf("Subject:"), text.IndexOf("Content-Type:") };
         }
 
         /// <summary>
@@ -29,9 +29,9 @@ namespace Escc.Umbraco.PickupAndSendEmails
         public string ParseSubject(string text)
         {
             var header = LocateSubjectHeader(text);
-            if (header.Item1 > -1 && header.Item2 > -1)
+            if (header[0] > -1 && header[1] > -1)
             {
-                return text.Substring(header.Item1 + 9, header.Item2 - header.Item1 - 9).Replace(Environment.NewLine, String.Empty);
+                return text.Substring(header[0] + 9, header[1] - header[0] - 9).Replace(Environment.NewLine, String.Empty);
             }
             return String.Empty;
         }
