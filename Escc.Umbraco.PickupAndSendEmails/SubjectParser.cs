@@ -12,18 +12,26 @@ namespace Escc.Umbraco.PickupAndSendEmails
     public class SubjectParser : ISubjectParser
     {
         /// <summary>
+        /// Locates the subject header and returns the start and end position in the string
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns></returns>
+        public (int, int) LocateSubjectHeader(string text)
+        {
+            return (text.IndexOf("Subject:"), text.IndexOf("Content-Type:"));
+        }
+
+        /// <summary>
         /// Parses the subject.
         /// </summary>
         /// <param name="text">The text.</param>
         /// <returns></returns>
         public string ParseSubject(string text)
         {
-            text = text.Replace(Environment.NewLine, String.Empty);
-            var subjectPos = text.IndexOf("Subject:");
-            var contentTypePos = text.IndexOf("Content-Type:");
-            if (subjectPos > -1 && contentTypePos > -1)
+            var header = LocateSubjectHeader(text);
+            if (header.Item1 > -1 && header.Item2 > -1)
             {
-                return text.Substring(subjectPos + 9, contentTypePos - subjectPos - 9);
+                return text.Substring(header.Item1 + 9, header.Item2 - header.Item1 - 9).Replace(Environment.NewLine, String.Empty);
             }
             return String.Empty;
         }
