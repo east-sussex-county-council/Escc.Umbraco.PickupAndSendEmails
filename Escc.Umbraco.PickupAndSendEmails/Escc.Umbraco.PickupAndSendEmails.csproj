@@ -116,13 +116,13 @@
   <ItemGroup>
     <Compile Include="EmailModel.cs" />
     <Compile Include="EmailParser.cs" />
-    <Compile Include="IContentMatcher.cs" />
+    <Compile Include="IEmailMatcher.cs" />
     <Compile Include="IEmailParser.cs" />
     <Compile Include="ISubjectParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegexContentMatcher.cs" />
-    <Compile Include="StringContentMatcher.cs" />
+    <Compile Include="SubjectMatcher.cs" />
     <Compile Include="SubjectParser.cs" />
   </ItemGroup>
   <ItemGroup>

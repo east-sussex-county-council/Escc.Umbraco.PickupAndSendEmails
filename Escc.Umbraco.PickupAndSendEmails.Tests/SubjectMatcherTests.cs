@@ -4,13 +4,13 @@ using System;
 namespace Escc.Umbraco.PickupAndSendEmails.Tests
 {
     [TestFixture]
-    public class RegexSubjectMatcherTests
+    public class SubjectMatcherTests
     {
         [Test]
-        public void FormSubmittedSubjectIsMatched()
+        public void ExactSubjectIsMatched()
         {
-            var matcher = new RegexSubjectMatcher("The Form '(\n|\r|\r\n|.)*' was submitted");
-            var email = new EmailModel() { Subject = "The Form 'My test form' was submitted" };
+            var matcher = new SubjectMatcher("Umbraco: Reset Password");
+            var email = new EmailModel() { Subject = "Umbraco: Reset Password" };
 
             var isMatch = matcher.IsMatch(email);
 
@@ -20,7 +20,7 @@ namespace Escc.Umbraco.PickupAndSendEmails.Tests
         [Test]
         public void WrongSubjectIsNotMatched()
         {
-            var matcher = new RegexSubjectMatcher("The Form '(\n|\r|\r\n|.)*' was submitted");
+            var matcher = new SubjectMatcher("Umbraco: Reset Password");
             var email = new EmailModel() { Subject = "And another thing..." };
 
             var isMatch = matcher.IsMatch(email);
