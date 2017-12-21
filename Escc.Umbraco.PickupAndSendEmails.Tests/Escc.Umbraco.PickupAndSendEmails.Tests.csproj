@@ -45,6 +45,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailParserTests.cs" />
+    <Compile Include="FakeSubjectParser.cs" />
     <Compile Include="SubjectParserTests.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>

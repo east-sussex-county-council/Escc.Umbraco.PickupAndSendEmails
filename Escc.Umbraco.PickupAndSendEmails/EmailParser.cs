@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -68,7 +69,7 @@ namespace Escc.Umbraco.PickupAndSendEmails
                 }
                 else
                 {
-                    email.Body += line.Replace("=\r", "").Replace("=3D", "=");
+                    email.Body += line.Replace("=\r", "").Replace("=3D", "=").Replace("=0D=0A", Environment.NewLine);
                 }
             }
 
