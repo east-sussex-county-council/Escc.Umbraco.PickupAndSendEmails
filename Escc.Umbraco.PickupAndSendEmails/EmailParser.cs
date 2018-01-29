@@ -75,7 +75,7 @@ namespace Escc.Umbraco.PickupAndSendEmails
                 }
                 else
                 {
-                    email.Body += line.Replace("=\r", "").Replace("=3D", "=").Replace("=0D=0A", Environment.NewLine);
+                    email.Body += line.Replace("=\r", "").Replace("=3D", "=").Replace("=0D=0A", Environment.NewLine).Replace("=0A", Environment.NewLine);
                 }
             }
 
