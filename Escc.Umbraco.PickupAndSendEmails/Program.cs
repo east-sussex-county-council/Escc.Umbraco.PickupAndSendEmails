@@ -56,12 +56,19 @@ namespace Escc.Umbraco.PickupAndSendEmails
             foreach (var Email in EmailsToSend)
             {
                 log.Info(string.Format("Sending email to: {0}", Email.To));
-                var Mail = new MailMessage(Email.From, Email.To, Email.Subject, Email.Body);
-                Mail.IsBodyHtml = true;
-                Mail.BodyEncoding = System.Text.Encoding.UTF8;
+                var mail = new MailMessage();
+                mail.From = new MailAddress(Email.From);
+                foreach (var address in Email.To)
+                {
+                    mail.To.Add(address);
+                }
+                mail.Subject = Email.Subject;
+                mail.Body = Email.Body;
+                mail.IsBodyHtml = true;
+                mail.BodyEncoding = System.Text.Encoding.UTF8;
 
                 var emailService = ServiceContainer.LoadService<IEmailSender>(new ConfigurationServiceRegistry(), null);
-                emailService.SendAsync(Mail);
+                emailService.SendAsync(mail);
 
                 log.Info(string.Format("Deleting .eml file at \"{0}\"", Email.PathToFile));
                 File.Delete(Email.PathToFile); 

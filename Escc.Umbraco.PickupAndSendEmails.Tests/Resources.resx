@@ -483,6 +483,85 @@ k" style=3D"color: #ffffff;"&gt;Find our documentation here&lt;/a&gt;&lt;/p&gt;=
 dif]--&gt;=0D=0A            &lt;/td&gt;=0D=0A        &lt;/tr&gt;=0D=0A=0D=0A    =
 &lt;/table&gt;=0D=0A&lt;/body&gt;=0D=0A&lt;/html&gt;=0D=0A</value>
   </data>
+  <data name="FormSubmittedEmailMultipleRecipients" xml:space="preserve">
+    <value>X-Sender: do-not-reply@eastsussex.gov.uk
+X-Receiver: john.smith@eastsussex.gov.uk
+X-Receiver: jane.doe@eastsussex.gov.uk
+X-Receiver: joe.bloggs@eastsussex.gov.uk
+MIME-Version: 1.0
+From: do-not-reply@eastsussex.gov.uk
+To: john.smith@eastsussex.gov.uk, jane.doe@eastsussex.gov.uk,
+ joe.bloggs@eastsussex.gov.uk
+Date: 15 May 2018 15:32:42 +0000
+Subject: The Form 'Example form (v0001) used
+ 2018-05-10 to current' was submitted
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+=0A&lt;!DOCTYPE html&gt;=0A&lt;html&gt;=0A&lt;head&gt;=0A    &lt;title&gt;&lt;/title&gt;=0A    =
+&lt;meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3D=
+utf-8" /&gt;=0A    &lt;meta name=3D"viewport" content=3D"width=3Ddevice=
+-width, initial-scale=3D1"&gt;=0A    &lt;meta http-equiv=3D"X-UA-Compat=
+ible" content=3D"IE=3Dedge" /&gt;=0A    &lt;style type=3D"text/css"&gt;=0A=
+=0A    /* CLIENT-SPECIFIC STYLES */=0A    body, table, td, a { -w=
+ebkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }=0A   =
+ table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }=0A  =
+  img { -ms-interpolation-mode: bicubic; }=0A=0A    /* RESET STYL=
+ES */=0A    img { border: 0; height: auto; line-height: 100%; out=
+line: none; text-decoration: none; }=0A    table { border-collaps=
+e: collapse !important; }=0A    body { height: 100% !important; m=
+argin: 0 !important; padding: 0 !important; width: 100% !importan=
+t; }=0A=0A    /* iOS BLUE LINKS */=0A    a[x-apple-data-detectors=
+] {=0A        color: inherit !important;=0A        text-decoratio=
+n: none !important;=0A        font-size: inherit !important;=0A  =
+      font-family: inherit !important;=0A        font-weight: inh=
+erit !important;=0A        line-height: inherit !important;=0A   =
+ }=0A=0A	/* MOBILE STYLES */=0A	@media screen and (max-width:600p=
+x){=0A		h1 {=0A			font-size: 32px !important;=0A			line-height: 3=
+2px !important;=0A		}=0A	}=0A=0A    /* ANDROID CENTER FIX */=0A  =
+  div[style*=3D"margin: 16px 0;"] { margin: 0 !important; }=0A   =
+ &lt;/style&gt;=0A&lt;/head&gt;=0A&lt;body style=3D"background-color: #f4f4f4; m=
+argin: 0 !important; padding: 0 !important;"&gt;=0A    &lt;table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D=
+"margin-bottom: 40px;"&gt;=0A        &lt;!-- COPY BLOCK --&gt;=0A        &lt;=
+tr&gt;=0A            &lt;td bgcolor=3D"#F3F3F5" align=3D"center" style=3D=
+"padding: 0px 10px 0px 10px;"&gt;=0A                &lt;!--[if (gte mso=
+ 9)|(IE)]&gt;=0A                    &lt;table align=3D"center" border=3D=
+"0" cellspacing=3D"0" cellpadding=3D"0" width=3D"600"&gt;=0A        =
+            &lt;tr&gt;=0A                    &lt;td align=3D"center" valig=
+n=3D"top" width=3D"600"&gt;=0A                &lt;![endif]--&gt;=0A       =
+         &lt;table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+width=3D"100%" style=3D"max-width: 600px;"&gt;=0A=0A                =
+    &lt;!-- IMAGE --&gt;=0A                    &lt;tr&gt;=0A                 =
+       &lt;td bgcolor=3D"#ffffff" align=3D"left" style=3D"padding: 0=
+;"&gt;=0A                            &lt;img alt=3D"" src=3D"https://ex=
+ample.azurewebsites.net/images/forms-email-hea=
+der.png" width=3D"600" style=3D"display: block; width: 100%; max-=
+width: 100%; min-width: 100px;" border=3D"0" /&gt;=0A               =
+         &lt;/td&gt;=0A                    &lt;/tr&gt;=0A=0A                 =
+   &lt;!-- HERO --&gt;=0A                    &lt;tr&gt;=0A                   =
+     &lt;td bgcolor=3D"#ffffff" valign=3D"top" style=3D"padding: 40p=
+x 20px 10px 30px; color: #000000; font-family: Helvetica, Arial, =
+sans-serif; font-size: 28px; font-weight: 900; line-height: 38px;=
+"&gt;=0A                            &lt;h1 style=3D"font-size: 28px; fo=
+nt-weight: 900; margin: 0;"&gt;Someone filled in your form&lt;/h1&gt;=0A  =
+                      &lt;/td&gt;=0A                    &lt;/tr&gt;=0A=0A    =
+                &lt;!-- COPY --&gt;=0A                    &lt;tr&gt;=0A      =
+                  &lt;td bgcolor=3D"#ffffff" style=3D"padding: 10px =
+30px 40px 30px; color: #303033; font-family: Helvetica, Arial, sa=
+ns-serif; font-size: 18px; font-weight: 400; line-height: 25px;"&gt;=
+=0A=0A                            &lt;p&gt;Someone filled in your form =
+at 4.32pm on Tuesday 15 May 2018.&lt;/p&gt;=0A                         =
+       &lt;p&gt;&lt;a href=3D"https://example.azurewebs=
+ites.net/umbraco/#/forms/formEntries/edit/a4e4e793-935d-408a-9af4=
+-a34a84d8c996?entry=3D67a31d28-d6d6-4c7f-9618-f68bb7a67du8"&gt;View =
+the new form entry&lt;/a&gt;&lt;/p&gt;=0A=0A=0A                        &lt;/td&gt;=0A=
+                    &lt;/tr&gt;=0A                &lt;/table&gt;=0A          =
+      &lt;!--[if (gte mso 9)|(IE)]&gt;=0A                    &lt;/td&gt;=0A  =
+                  &lt;/tr&gt;=0A                    &lt;/table&gt;=0A        =
+        &lt;![endif]--&gt;=0A            &lt;/td&gt;=0A        &lt;/tr&gt;=0A=0A   =
+ &lt;/table&gt;=0A&lt;/body&gt;=0A&lt;/html&gt;=0A</value>
+  </data>
   <data name="PasswordResetEmail" xml:space="preserve">
     <value>X-Sender: do-not-reply@eastsussex.gov.uk
 X-Receiver: example@eastsussex.gov.uk

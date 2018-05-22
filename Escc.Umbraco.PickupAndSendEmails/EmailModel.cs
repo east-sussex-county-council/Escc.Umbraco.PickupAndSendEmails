@@ -9,12 +9,10 @@ namespace Escc.Umbraco.PickupAndSendEmails
     public class EmailModel
     {
         public string From { get; set; }
-        public string To { get; set; }
+        public IList<string> To { get; set; } = new List<string>();
         public string Subject { get; set; }
         public DateTime Sent { get; set; }
         public string Body { get; set; }
-        public string XSender { get; set; }
-        public string XReceiver { get; set; }
         public string MimeVersion { get; set; }
         public string ContentType { get; set; }
         public string ContentTransferEncoding { get; set; }

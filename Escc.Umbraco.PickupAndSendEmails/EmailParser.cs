@@ -45,21 +45,21 @@ namespace Escc.Umbraco.PickupAndSendEmails
                 {
                     email.From = line.Replace("From:", "").Replace("\r", "");
                 }
-                else if (line.Contains("To:"))
-                {
-                    email.To = line.Replace("To:", "").Replace("\r", "");
-                }
                 else if (line.Contains("Date:"))
                 {
                     email.Sent = DateTime.Parse(line.Replace("Date:", ""));
                 }
+                else if (line.Contains("To:"))
+                {
+                    continue;
+                }
                 else if (line.Contains("X-Sender:"))
                 {
-                    email.XSender = line.Replace("X-Sender:", "").Replace("\r", "");
+                    continue;
                 }
                 else if (line.Contains("X-Receiver:"))
                 {
-                    email.XReceiver = line.Replace("X-Receiver:", "").Replace("\r", "");
+                    email.To.Add(line.Replace("X-Receiver:", "").Replace("\r", "").Trim());
                 }
                 else if (line.Contains("MIME-Version:"))
                 {
