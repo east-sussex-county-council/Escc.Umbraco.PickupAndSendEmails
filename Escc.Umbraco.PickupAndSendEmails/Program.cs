@@ -87,31 +87,39 @@ namespace Escc.Umbraco.PickupAndSendEmails
             //Look for files that end in .eml
             foreach (var file in Files)
             {
-                log.Info(string.Format("Looking at file: {0}", file.Key));
-                if (file.Key.Contains(".eml"))
+                try
                 {
-                    log.Info(string.Format("File {0} is an .eml file.", file.Key));
-                    var email = emailParser.ParseEmail(File.ReadAllText(file.Value));
-                    email.PathToFile = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["EmailDirectory"], file.Key);
-
-                    var isMatch = false;
-                    foreach (var matcher in subjectMatchers) isMatch = isMatch || matcher.IsMatch(email);
-
-                    if (isMatch)
+                    log.Info(string.Format("Looking at file: {0}", file.Key));
+                    if (file.Key.Contains(".eml"))
                     {
-                        log.Info(string.Format("File {0} contains recognised subject: {1}", file.Key, email.Subject));
-                        EmailsToSend.Add(email);
+                        log.Info(string.Format("File {0} is an .eml file.", file.Key));
+                        var email = emailParser.ParseEmail(File.ReadAllText(file.Value));
+                        email.PathToFile = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["EmailDirectory"], file.Key);
+
+                        var isMatch = false;
+                        foreach (var matcher in subjectMatchers) isMatch = isMatch || matcher.IsMatch(email);
+
+                        if (isMatch)
+                        {
+                            log.Info(string.Format("File {0} contains recognised subject: {1}", file.Key, email.Subject));
+                            EmailsToSend.Add(email);
+                        }
+                        else
+                        {
+                            log.Info(string.Format("File {0} does not contain a recognised subject: {1}", file.Key, email.Subject));
+                        }
                     }
                     else
                     {
-                        log.Info(string.Format("File {0} does not contain a recognised subject: {1}", file.Key, email.Subject));
+                        log.Info(string.Format("File {0} is not an .eml file.", file.Key));
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    log.Info(string.Format("File {0} is not an .eml file.", file.Key));
+                    ex.ToExceptionless().Submit();
+                    log.Error(ex.Message);
                 }
-               
+
             }
             return EmailsToSend;
         }
