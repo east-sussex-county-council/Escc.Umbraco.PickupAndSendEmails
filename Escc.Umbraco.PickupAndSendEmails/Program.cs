@@ -55,7 +55,7 @@ namespace Escc.Umbraco.PickupAndSendEmails
             // For each Email to send, process into a MailMessage Object and send using Escc.Services
             foreach (var Email in EmailsToSend)
             {
-                log.Info(string.Format("Sending email to: {0}", Email.To));
+                log.Info($"Sending email {Email.Subject} to: {Email.To}");
                 var mail = new MailMessage();
                 mail.From = new MailAddress(Email.From);
                 foreach (var address in Email.To)
@@ -78,10 +78,6 @@ namespace Escc.Umbraco.PickupAndSendEmails
         private static List<EmailModel> ProcessFiles(Dictionary<string, string> Files)
         {
             var EmailsToSend = new List<EmailModel>();
-            var subjectMatchers = new IEmailMatcher[] {
-                new SubjectMatcher("Umbraco: Reset Password"),
-                new RegexSubjectMatcher("^The Form '(\n|\r|\r\n|.)*' was submitted$")
-            };
 
             var emailParser = new EmailParser(new SubjectParser());
             //Look for files that end in .eml
@@ -95,19 +91,7 @@ namespace Escc.Umbraco.PickupAndSendEmails
                         log.Info(string.Format("File {0} is an .eml file.", file.Key));
                         var email = emailParser.ParseEmail(File.ReadAllText(file.Value));
                         email.PathToFile = string.Format("{0}\\{1}", ConfigurationManager.AppSettings["EmailDirectory"], file.Key);
-
-                        var isMatch = false;
-                        foreach (var matcher in subjectMatchers) isMatch = isMatch || matcher.IsMatch(email);
-
-                        if (isMatch)
-                        {
-                            log.Info(string.Format("File {0} contains recognised subject: {1}", file.Key, email.Subject));
-                            EmailsToSend.Add(email);
-                        }
-                        else
-                        {
-                            log.Info(string.Format("File {0} does not contain a recognised subject: {1}", file.Key, email.Subject));
-                        }
+                        EmailsToSend.Add(email);
                     }
                     else
                     {
