@@ -18,6 +18,7 @@ namespace Escc.Umbraco.PickupAndSendEmails
         {
             ExceptionlessClient.Default.Startup();
             XmlConfigurator.Configure();
+            Exception firstException = null;
 
             try
             {
@@ -47,7 +48,13 @@ namespace Escc.Umbraco.PickupAndSendEmails
             {
                 ex.ToExceptionless().Submit();
                 log.Error(ex.Message);
+
+                // continue to process the next email, but store the exception to throw later
+                if (firstException == null) firstException = ex;
             }
+
+            // Rethrow the error if there was one, so that if this is run as an Azure Webjob it will correctly report success or failure
+            if (firstException != null) throw firstException;
         }
 
         private static void SendEmails(List<EmailModel> EmailsToSend)
